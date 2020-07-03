@@ -291,7 +291,18 @@ function removeVideoElement(elementId) { //ビデオ要素削除→これない�
 // ---------------------- media handling ----------------------- 
 function startVideo() { // ボタンを押して自分のWebカメラの映像を映す
     getDeviceStream({
-            video: true,
+            video: {
+                width: {
+                    min: 320,
+                    max: 960
+                },height: {
+                    min: 240,
+                    max: 720
+                },frameRate: {
+                    min: 1,
+                    max: 10
+                }
+            },
             audio: true
         }) // audio: false <-- ontrack once, audio:true --> ontrack twice!!
         .then(function(stream) { // success
