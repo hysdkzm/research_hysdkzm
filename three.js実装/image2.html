@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>360 Panorama Viewer Demo : Three.js : Image</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<!-- three.jsの読み込み -->
+<script src="three.min.js"></script>
+<!-- DeviceOrientationControls.jsの読み込み -->
+<script src="DeviceOrientationControls.js"></script>
+<!-- OrbitControls.jsの読み込み -->
+<script src="OrbitControls.js"></script>
+<!-- main.jsの読み込み -->
+</head>
+<body>
+    <div class="stage" id="a" style="width: 1400px; height: 700px;position: static; border:5px solid red;margin:10px;"></div>
+    <div class="stage" id="b" style="width: 1400px; height: 700px;position: static; border:5px solid red;margin:10px;"></div>
+<script>
+  //windowサイズを画面サイズに合わせる
+    var width = 1400;
+    var height = 700;
+    var element,element1;
+    var scene, camera, renderer, controls;
+    var scene1, camera1, renderer1, controls1;
+    var count=2;
+    const a = document.getElementsByClassName("stage");
+
+    
+    for(var i=0; i<2; i++){
+        eval("var scene["+i+"]= new THREE.Scene();" );
+        eval("var camera["+i+"]= new THREE.PerspectiveCamera(75, width / height, 1, 1000);" );
+        eval("var geometry["+i+"]= new THREE.SphereGeometry(5, 60, 40);" );
+        eval("var material["+i+"]= new THREE.MeshBasicMaterial(map: THREE.ImageUtils.loadTexture('image.jpg'));" );
+        eval("var sphere["+i+"]= new THREE.Mesh(geometry, material);" );
+        eval("var renderer["+i+"]= new THREE.WebGLRenderer();" );
+        eval("var element["+i+"]= renderer1.domElement;" );
+        }
+        init();
+
+    function init() {
+    // シーンの作成
+        scene = new THREE.Scene();
+        scene1 = new THREE.Scene();
+    // リサイズイベントを検知してリサイズ処理を実行
+        window.addEventListener("resize", handleResize, false);
+        window.addEventListener("resize", handleResize1, false);
+
+    // カメラの作成
+        camera = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+        camera.position.set(0, 0, 0);
+        scene.add(camera);
+    // カメラの作成
+        camera1 = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+        camera1.position.set(0, 0, 0);
+        scene1.add(camera1);
+
+    // 球体の形状を作成
+        var geometry = new THREE.SphereGeometry(5, 60, 40);
+        geometry.scale(-1, 1, 1);
+    // 球体の形状を作成
+        var geometry1 = new THREE.SphereGeometry(5, 60, 40);
+        geometry1.scale(-1, 1, 1);
+
+    //　マテリアルの作成
+        var material = new THREE.MeshBasicMaterial({
+      // 画像をテクスチャとして読み込み
+            map: THREE.ImageUtils.loadTexture("image.jpg")
+        });
+        var material1 = new THREE.MeshBasicMaterial({
+      // 画像をテクスチャとして読み込み
+            map: THREE.ImageUtils.loadTexture("image3.jpg")
+        });
+
+    // 球体(形状)にマテリアル(質感)を貼り付けて物体を作成
+        sphere = new THREE.Mesh(geometry, material);
+    // 球体(形状)にマテリアル(質感)を貼り付けて物体を作成
+        sphere1 = new THREE.Mesh(geometry1, material1);
+
+    //　シーンに追加
+        scene.add(sphere);
+    // レンダラーの作成
+        renderer = new THREE.WebGLRenderer();
+    //　シーンに追加
+        scene1.add(sphere1);
+    // レンダラーの作成
+        renderer1 = new THREE.WebGLRenderer();
+
+    // レンダラーをwindowサイズに合わせる
+        renderer.setSize(width, height);
+        renderer.setClearColor({color: 0x000000});
+        element = renderer.domElement;
+        //a=document.getElementsByClassName("stage");
+        a[0].appendChild(element);
+        renderer.render(scene, camera);
+        //console.log("いま"+count+"だよん")
+    // レンダラーをwindowサイズに合わせる
+        renderer1.setSize(width, height);
+        renderer1.setClearColor({color: 0x000000});
+        element1 = renderer1.domElement;
+        a[1].appendChild(element1);
+        renderer1.render(scene1, camera1);
+        //console.log("いま"+count+"だよん")
+      // パソコンの場合
+      // マウスドラッグで視点操作を可能にする
+        setOrbitControls();
+        setOrbitControls1();
+        render();
+        render1();
+    return;
+    }
+
+
+  // リサイズ処理
+    function handleResize() {
+        renderer.setSize(1400, 700);
+        camera.aspect = 1400 / 700;
+        camera.updateProjectionMatrix();
+        }   
+    function handleResize1() {
+        renderer1.setSize(1400, 700);
+        camera1.aspect = 1400 / 700;
+        camera1.updateProjectionMatrix();
+        }   
+    function setOrbitControls() {
+    // パソコン閲覧時マウスドラッグで視点操作する
+        controls = new THREE.OrbitControls(camera, element);
+        controls.target.set(
+        camera.position.x + 0.15,
+        camera.position.y,
+        camera.position.z
+    );
+    // 視点操作のイージングをONにする
+        controls.enableDamping = true;
+    // 視点操作のイージングの値
+        controls.dampingFactor = 0.2;
+    // 視点変更の速さ
+        controls.rotateSpeed = 0.1;
+    // ズーム禁止
+        controls.noZoom = false;
+    // パン操作禁止
+        controls.noPan = false;
+        }
+        
+    function setOrbitControls1() {
+    // パソコン閲覧時マウスドラッグで視点操作する
+        controls1 = new THREE.OrbitControls(camera1, element1);
+        controls1.target.set(
+        camera1.position.x + 0.15,
+        camera1.position.y,
+        camera1.position.z
+    );
+    // 視点操作のイージングをONにする
+        controls1.enableDamping = true;
+    // 視点操作のイージングの値
+        controls1.dampingFactor = 0.2;
+    // 視点変更の速さ
+        controls1.rotateSpeed = 0.1;
+    // ズーム禁止
+        controls1.noZoom = false;
+    // パン操作禁止
+        controls1.noPan = false;
+    }
+
+    function render() {
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+        controls.update();
+        }
+    function render1() {
+        requestAnimationFrame(render1);
+        renderer1.render(scene1, camera1);
+        controls1.update();
+        }
+    </script>
+
+</body>
+</html>

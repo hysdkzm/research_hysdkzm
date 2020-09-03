@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 フルスクリーン</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all">
+</head>
+<body>
+
+
+
+<div class="opi" id="album">
+  <img src="image.jpg" id="photo" width="100%" alt="一本うどん">
+  <input type="button"  id="btn-open" class="btn" width="300" height="64" value="開くぜ！！" style="display:block;width:30%;">
+  <input type="button"  id="btn-close" class="btn" width="300" height="64" value="閉じるぜ！！" style="width:30%;">
+</div>
+
+
+
+<script>
+const btnOpen  = document.querySelector("#btn-open");   // フルスクリーン化ボタン
+const btnClose = document.querySelector("#btn-close");  // フルスクリーンキャンセルボタン
+init();
+function init(){
+var a = document.getElementsByClassName("opi");
+  const album = a[0];     // フルスクリーンにするオブジェクト
+
+  //--------------------------------
+  // [event] 開始ボタンをクリック
+  //--------------------------------
+  btnOpen.addEventListener("click", ()=>{
+    if( ! enabledFullScreen() ){
+      alert("フルスクリーンに対応していません");
+      return(false);
+    }
+    // フルスクリーンを開始
+    goFullScreen(album);
+  });
+
+  //--------------------------------
+  // [event] 閉じるボタンをクリック
+  //--------------------------------
+  btnClose.addEventListener("click", ()=>{
+    // フルスクリーンを解除
+    cancelFullScreen(album);
+  });
+
+  //--------------------------------
+  // フルスクリーンイベント
+  //--------------------------------
+  eventFullScreen( ()=>{
+      // ボタンを入れ替える
+    if( getFullScreenObject() ){
+      console.log("フルスクリーン開始");
+      btnOpen.style.display  = "none";    // OpenをOFF
+      btnClose.style.display = "block";   // CloseをON
+    }
+    else{
+      console.log("フルスクリーン終了");
+      btnClose.style.display = "none";    // CloseをOFF
+      btnOpen.style.display  = "block";   // OpenをON
+    }
+  });
+};
+
+/**
+ * フルスクリーン開始/終了時のイベント設定
+ *
+ * @param {function} callback
+ */
+function eventFullScreen(callback){
+  document.addEventListener("fullscreenchange", callback, false);
+  document.addEventListener("webkitfullscreenchange", callback, false);
+  document.addEventListener("mozfullscreenchange", callback, false);
+  document.addEventListener("MSFullscreenChange", callback, false);
+}
+
+/**
+ * フルスクリーンが利用できるか
+ *
+ * @return {boolean}
+ */
+function enabledFullScreen(){
+  return(
+    document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen || document.msFullscreenEnabled
+  );
+}
+
+/**
+ * フルスクリーンにする
+ *
+ * @param {object} [element]
+ */
+function goFullScreen(element=null){
+  const doc = window.document;
+  const docEl = (element === null)?  doc.documentElement:element;
+  let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  requestFullScreen.call(docEl);
+}
+
+/**
+ * フルスクリーンをやめる
+ */
+function cancelFullScreen(){
+  const doc = window.document;
+  const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+  cancelFullScreen.call(doc);
+}
+
+/**
+ * フルスクリーン中のオブジェクトを返却
+ */
+function getFullScreenObject(){
+  const doc = window.document;
+  const objFullScreen = doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+  return(objFullScreen);
+}
+</script>
+</body>
+</html>

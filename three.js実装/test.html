@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>360 Panorama Viewer Demo : Three.js : Image</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<!-- three.jsの読み込み -->
+<script src="three.min.js"></script>
+<!-- DeviceOrientationControls.jsの読み込み -->
+<script src="DeviceOrientationControls.js"></script>
+<!-- OrbitControls.jsの読み込み -->
+<script src="OrbitControls.js"></script>
+<!-- main.jsの読み込み -->
+</head>
+<body>
+    <div class="stage" id="a" style="width: 1400px; height: 700px;position: static; border:5px solid red;margin:10px;"></div>
+    <div class="stage" id="b" style="width: 1400px; height: 700px;position: static; border:5px solid red;margin:10px;"></div>
+<script>
+  //windowサイズを画面サイズに合わせる
+    var width = 1400;
+    var height = 700;
+    //var element,element1;
+    //var scene, camera, renderer, controls;
+    var scene1, camera1, renderer1, controls1;
+    var count=0;
+    const a = document.getElementsByClassName("stage");
+    
+    var scene = ['リンゴ', 'バナナ', 'イチゴ'];
+    var camera = ['リンゴ', 'バナナ', 'イチゴ'];
+    var renderer = ['リンゴ', 'バナナ', 'イチゴ'];
+    var controls= ['リンゴ', 'バナナ', 'イチゴ'];
+    var element = ['リンゴ', 'バナナ', 'イチゴ'];
+    var material = ['リンゴ', 'バナナ', 'イチゴ'];
+    var geometry = ['リンゴ', 'バナナ', 'イチゴ'];
+    var sphere = ['リンゴ', 'バナナ', 'イチゴ'];
+
+
+    for(var i=0; i<2; i++){
+        eval(" scene[" + i + "]= new THREE.Scene();" );
+        eval(" camera["+i+"]= new THREE.PerspectiveCamera(75, width / height, 1, 1000);" );
+        eval(" geometry["+i+"]= new THREE.SphereGeometry(5, 60, 40);" );
+        //eval(" material["+i+"]= new THREE.MeshBasicMaterial(map: THREE.ImageUtils.loadTexture('image.jpg'));" );
+        //eval(" sphere["+i+"]= new THREE.Mesh(geometry, material);" );
+        eval(" renderer["+i+"]= new THREE.WebGLRenderer();" );
+        //eval(" element["+i+"]= renderer1.domElement;" );
+        init();
+        }
+        //init();
+
+    function init() {
+    // シーンの作成
+
+        //console.log("いまはあｊｓｈｈｈど"+scene[0]);
+        //console.log("いまはあｊｓｈｈｈど"+scene[1]);
+
+        //scene = new THREE.Scene();
+        //scene1 = new THREE.Scene();
+    // リサイズイベントを検知してリサイズ処理を実行
+        //
+        if(count==0){
+        window.addEventListener("resize", handleResize, false);}
+        else if(count==1){
+        window.addEventListener("resize", handleResize1, false);}
+
+    // カメラの作成
+        //camera = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+
+        camera[count].position.set(0, 0, 0);
+        scene[count].add(camera[count]);
+    // カメラの作成
+        //camera1 = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+        //camera1.position.set(0, 0, 0);
+        //scene1.add(camera1);
+
+    // 球体の形状を作成
+        //var geometry = new THREE.SphereGeometry(5, 60, 40);
+        geometry[count].scale(-1, 1, 1);
+    // 球体の形状を作成
+        //var geometry1 = new THREE.SphereGeometry(5, 60, 40);
+        //geometry1.scale(-1, 1, 1);
+
+    //　マテリアルの作成
+        if(count==0){
+        material[0] = new THREE.MeshBasicMaterial({
+      // 画像をテクスチャとして読み込み
+            map: THREE.ImageUtils.loadTexture("image.jpg")
+        });}
+        else if (count==1){
+        material[1] = new THREE.MeshBasicMaterial({
+      // 画像をテクスチャとして読み込み
+            map: THREE.ImageUtils.loadTexture("image3.jpg")
+        });}
+
+
+    // 球体(形状)にマテリアル(質感)を貼り付けて物体を作成
+        sphere[count] = new THREE.Mesh(geometry[count], material[count]);
+    // 球体(形状)にマテリアル(質感)を貼り付けて物体を作成
+        //sphere1 = new THREE.Mesh(geometry1, material1);
+
+    //　シーンに追加
+        scene[count].add(sphere[count]);
+    // レンダラーの作成
+        //renderer = new THREE.WebGLRenderer();
+    //　シーンに追加
+        //scene1.add(sphere1);
+    // レンダラーの作成
+        //renderer1 = new THREE.WebGLRenderer();
+        
+    // レンダラーをwindowサイズに合わせる
+        renderer[count].setSize(width, height);
+        renderer[count].setClearColor({color: 0x000000});
+        element[count] = renderer[count].domElement;
+        //a=document.getElementsByClassName("stage");
+        a[count].appendChild(element[count]);
+        renderer[count].render(scene[count], camera[count]);
+
+        controls[count] = new THREE.OrbitControls(camera[count], element[count]);
+        controls[count].target.set(
+        camera[count].position.x + 0.15,
+        camera[count].position.y,
+        camera[count].position.z
+    );
+    // 視点操作のイージングをONにする
+        controls[count].enableDamping = true;
+    // 視点操作のイージングの値
+        controls[count].dampingFactor = 0.2;
+    // 視点変更の速さ
+        controls[count].rotateSpeed = 0.1;
+    // ズーム禁止
+        controls[count].noZoom = false;
+    // パン操作禁止
+        controls[count].noPan = false;
+        
+
+        //console.log("いま"+count+"だよん")
+    // レンダラーをwindowサイズに合わせる
+        //renderer1.setSize(width, height);
+        //renderer1.setClearColor({color: 0x000000});
+        //element1 = renderer1.domElement;
+        //a[1].appendChild(element1);
+        //renderer1.render(scene1, camera1);
+        //console.log("いま"+count+"だよん")
+      // パソコンの場合
+      // マウスドラッグで視点操作を可能にする
+        //setOrbitControls();
+        //setOrbitControls1();
+        //render();
+
+        if(count==0){
+            render();
+        }
+        if(count==1){
+            render1();
+        }
+        //requestAnimationFrame(render);
+        //renderer[count].render(scene[count], camera[count]);
+        //controls[count].update();
+        //render1();
+        count=count+1;
+    return;
+    }
+
+
+  // リサイズ処理
+    function handleResize() {
+        renderer[0].setSize(1400, 700);
+        camera[0].aspect = 1400 / 700;
+        camera[0].updateProjectionMatrix();
+        }   
+    function handleResize1() {
+        renderer[1].setSize(1400, 700);
+        camera[1].aspect = 1400 / 700;
+        camera[1].updateProjectionMatrix();
+        }   
+
+    function render() {
+        requestAnimationFrame(render);
+        renderer[0].render(scene[0], camera[0]);
+        controls[0].update();
+        }
+
+    function render1() {
+        requestAnimationFrame(render1);
+        renderer[1].render(scene[1], camera[1]);
+        controls[1].update();
+        }
+    </script>
+
+</body>
+</html>

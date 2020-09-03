@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>360 Panorama Viewer Demo : Three.js : Image</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<!-- three.jsの読み込み -->
+<script src="three.min.js"></script>
+<!-- DeviceOrientationControls.jsの読み込み -->
+<script src="DeviceOrientationControls.js"></script>
+<!-- OrbitControls.jsの読み込み -->
+<script src="OrbitControls.js"></script>
+<!-- main.jsの読み込み -->
+<link rel="stylesheet" href="style.css" type="text/css" media="all">
+</head>
+<body> 
+    <!--<div class="screenmode-change">
+        <button class="screenmode-change__btn" onclick=ChangeFullScreen()>全画面モード</button>
+        <button class="screenmode-change__btn" onclick="ExitFullScreen()">通常画面モード</button>
+    </div>  width: 700px; height: 350px;-->
+    <div class="stage" id="a"  style="width: 700px; height: 350px;">
+        <!--<input type="button"   onClick="ExitFullScreen()"  width="300" height="64" value="閉じるぜ！！" style="width:30%;">-->
+    </div>
+    <input type="button"  class="stage"  onClick="Fnk_Full()" width="300" height="64" value="開くぜ！！"  style="display:block;">
+    <!----<div class="stage" id="b" style="width: 700px; height: 350px;position: static; border:5px solid red;margin:10px;"></div>
+        <button class="screenmode-change__btn" onclick="ExitFullScreen()">通常画面モード</button>
+    <div class="stage" id="c" style="width: 700px; height: 350px;position: static; border:5px solid red;margin:10px;"></div>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+  //windowサイズを画面サイズに合わせる
+    var width = 700;
+    var height = 350;
+    //var element,element1;
+    //var scene, camera, renderer, controls;
+    var scene1, camera1, renderer1, controls1;
+    var count=0;
+    var a = document.getElementsByClassName("stage");
+    
+    var scene = ['リンゴ', 'バナナ', 'イチゴ'];
+    var camera = ['リンゴ', 'バナナ', 'イチゴ'];
+    var renderer = ['リンゴ', 'バナナ', 'イチゴ'];
+    var controls= ['リンゴ', 'バナナ', 'イチゴ'];
+    var element = ['リンゴ', 'バナナ', 'イチゴ'];
+    var material = ['リンゴ', 'バナナ', 'イチゴ'];
+    var geometry = ['リンゴ', 'バナナ', 'イチゴ'];
+    var sphere = ['リンゴ', 'バナナ', 'イチゴ'];
+    var fov = 60;
+    //const btnOpen  = document.querySelector("#btn-open");   // フルスクリーン化ボタン
+    //const btnClose = document.querySelector("#btn-close");  // フルスクリーンキャンセルボタン
+    //for(var i=0; i<3; i++){
+        init();
+        //}
+    function init() {
+        scene[count]=new THREE.Scene();
+        camera[count]=new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+        geometry[count]=new THREE.SphereGeometry(5, 60, 40);
+        renderer[count]= new THREE.WebGLRenderer();
+        
+        if(count==0){
+        window.addEventListener("resize", handleResize, false);
+        //onWindowResized(null)
+    }
+
+    // カメラの作成
+        //camera = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+        camera[count].position.set(0, 0, 0);
+        scene[count].add(camera[count]);
+        geometry[count].scale(-1, 1, 1);
+    // 球体の形状を作成
+    //　マテリアルの作成
+        if(count==0){
+        material[0] = new THREE.MeshBasicMaterial({
+      // 画像をテクスチャとして読み込み
+            map: THREE.ImageUtils.loadTexture("image.jpg")
+        });}
+
+    // 球体(形状)にマテリアル(質感)を貼り付けて物体を作成
+        sphere[count] = new THREE.Mesh(geometry[count], material[count]);
+    //　シーンに追加
+        scene[count].add(sphere[count]);
+    // レンダラーをwindowサイズに合わせる
+        renderer[count].setSize(700, 350);
+        renderer[count].setClearColor({color: 0x000000});
+        element[count] = renderer[count].domElement;
+        //a=document.getElementsByClassName("stage");
+        a[count].appendChild(element[count]);
+        renderer[count].render(scene[count], camera[count]);
+        controls[count] = new THREE.OrbitControls(camera[count], element[count]);
+        controls[count].target.set(
+        camera[count].position.x + 0.15,
+        camera[count].position.y,
+        camera[count].position.z
+    );
+    // 視点操作のイージングをONにする
+        controls[count].enableDamping = true;
+    // 視点操作のイージングの値
+        controls[count].dampingFactor = 0.2;
+    // 視点変更の速さ
+        controls[count].rotateSpeed = 0.1;
+    // ズーム禁止
+        controls[count].enableZoom = false;
+    // パン操作禁止
+        controls[count].enablePan = false;
+        
+        if(count==0){
+            render();
+        }
+    
+    return;
+    }
+
+  // リサイズ処理
+    function handleResize() {
+        renderer[0].setSize(window.innerWidth, window.innerHeight);
+        camera[0].aspect = window.innerWidth / window.innerHeight;
+        //camera[0].updateProjectionMatrix();
+        }   
+
+    function render() {
+        requestAnimationFrame(render);
+        renderer[0].render(scene[0], camera[0]);
+        controls[0].update();
+        }
+
+
+   // フルスクリーンにするオブジェクト
+
+
+      //count=count+1;
+
+
+// 全画面モードボタンの処理
+
+
+// 通常画面モードの処理
+function ExitFullScreen(){
+  if (document.webkitCancelFullScreen) {
+    document.webkitCancelFullScreen();
+
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+
+  } else {
+    document.exitFullscreen();
+
+  }
+};
+
+  
+  function requestFullscreen(fulltarget) {
+	if (fulltarget.webkitRequestFullscreen) {
+		fulltarget.webkitRequestFullscreen(); //Chrome15+, Safari5.1+, Opera15+
+	} else if (fulltarget.mozRequestFullScreen) {
+		fulltarget.mozRequestFullScreen(); //FF10+
+	} else if (fulltarget.msRequestFullscreen) {
+		fulltarget.msRequestFullscreen(); //IE11+
+	} else if (fulltarget.requestFullscreen) {
+		fulltarget.requestFullscreen(); // HTML5 Fullscreen API仕様
+    } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+
+    } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+   }  else {
+		alert('ご利用のブラウザはフルスクリーン操作に対応していません');
+		return;
+	}
+	
+}
+    function Fnk_Full() {
+        var fulltarget = document.getElementsByClassName('stage')[0];
+        //document.webkitCancelFullScreen();
+        //renderer[0].setSize(window.innerWidth, window.innerHeight);
+        //camera[0].aspect = window.innerWidth /window.innerHeight;
+        //camera[0].updateProjectionMatrix();
+        requestFullscreen(fulltarget);
+
+
+    }
+
+    </script>
+</body>
+</html>
