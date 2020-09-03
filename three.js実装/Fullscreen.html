@@ -1,0 +1,33 @@
+<div class="screenmode-change">
+	<button class="screenmode-change__btn" onclick="ChangeFullScreen($('body'))">全画面モード</button>
+	<button class="screenmode-change__btn" onclick="ExitFullScreen()">通常画面モード</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script>
+  // 全画面モードボタンの処理
+function ChangeFullScreen(elem){
+	elem = elem[0];
+	if (elem.requestFullscreen) {
+        elem.requestFullscreen(); 
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen(); 
+    }
+};
+
+// 通常画面モードの処理
+function ExitFullScreen(){
+	if (document.webkitCancelFullScreen) {
+	    document.webkitCancelFullScreen();
+	} else if (document.mozCancelFullScreen) {
+	    document.mozCancelFullScreen();
+	} else {
+	    document.exitFullscreen();
+	}
+};
+</script>

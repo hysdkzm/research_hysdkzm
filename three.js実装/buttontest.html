@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>360 Panorama Viewer Demo : Three.js : Image</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<!-- three.jsの読み込み -->
+<script src="three.min.js"></script>
+<!-- DeviceOrientationControls.jsの読み込み -->
+<script src="DeviceOrientationControls.js"></script>
+<!-- OrbitControls.jsの読み込み -->
+<script src="OrbitControls.js"></script>
+
+<!-- main.jsの読み込み -->
+</head>
+<body> 
+    <!--<div class="screenmode-change">
+        <button class="screenmode-change__btn" onclick=ChangeFullScreen()>全画面モード</button>
+        <button class="screenmode-change__btn" onclick="ExitFullScreen()">通常画面モード</button>
+    </div>  width: 700px; height: 350px;
+    <div class="stage " id="a" style="display:block;position: relative;">
+        <input type="button" value="フルスクリーンにする1"  id="btn-open" class="btn"  style="display:block">
+        <input type="button" value="終了1"  id="btn-close" class="btn" ></div>
+    <div class="stage" id="b" style="display:block;position:relative;">
+        <input type="button" value="フルスクリーンにする2"  id="btn-open1" class="btn"  style="display:block">
+        <input type="button" value="終了2"  id="btn-close1" class="btn" ></div>
+    <div class="stage" id="c" style="display:block;position:relative;">
+        <input type="button" value="フルスクリーンにする3"  id="btn-open2" class="btn"  style="display:block">
+        <input type="button" value="終了3"  id="btn-close2" class="btn"  ></div>-->
+
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<form><ul>
+    <li><input type="button" name="no1" value="1" class="btn"></li>
+    <li><input type="button" name="no2" value="2" class="btn"></li>
+    <li><input type="button" name="no3" value="3" class="btn"></li>
+    <li><input type="button" name="no4" value="4" class="btn"></li>
+    <li><input type="button" name="no5" value="5" class="btn"></li>
+    </ul></form>
+    <script>
+    
+    $("[name=no1]").click(function(){
+    var selectNo = $(this).val();
+    console.log(selectNo);
+});
+
+        </script>
+        </body>
+        </html>

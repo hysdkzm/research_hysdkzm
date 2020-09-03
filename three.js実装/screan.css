@@ -1,0 +1,8 @@
+  .stage{
+    width: 700px; 
+    height: 350px;
+    position: static; 
+    margin:10px;
+    float:  left;   /* 回り込み指定 */
+    background-color: #ffffff;
+}
