@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Kurento Group Call Node</title>
+	<script src="./js/three.min.js"></script>
+    <script src="./js/OrbitControls.js"></script>
+	<script src="./js/DeviceOrientationControls.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+			
+	<div id="container">
+		<div id="wrapper">
+			<div id="join" class="animate join">
+				<h1>Join a Room</h1>
+				<form onsubmit="register(); return false;" accept-charset="UTF-8">
+					<p>
+						<input type="text" name="name" value="" id="name"
+							placeholder="Username" required>
+					</p>
+					<p>
+						<input type="text" name="room" value="" id="roomName"
+							placeholder="Room" required>
+					</p>
+					<p class="submit">
+						<input type="submit" name="commit" value="Join!">
+					</p>
+				</form>
+			</div>
+			<div id="room" style="display: none;">
+				<h2 id="room-header"></h2>
+				<div id="participants"></div>
+					<input type="button" name="1" value="user1_VR"  id="btn-open" class="btn"   style="display:none">
+						<div class="stage" id="a" style="display:none;position: static; " style="z-index: 1;">
+							<input type="button" name="1_1" value="終了1"  id="btn-close" class="btn"></div>
+					<input type="button" name="2" value="user2_VR"  id="btn-open1" class="btn"   style="display:none">
+						<div class="stage" id="b" style="display:none;position: static; "style="z-index: 1;">
+							<input type="button" name="2_2" value="終了2"  id="btn-close1" class="btn" ></div>
+					<input type="button" name="3" value="user3_VR"  id="btn-open2" class="btn"   style="display:none">
+						<div class="stage" id="c" style="display:none;position: static; "style="z-index: 1;">
+							<input type="button" name="3_3" value="終了3"  id="btn-close2" class="btn" ></div>
+					<input type="button" name="4" value="user4_VR"  id="btn-open3" class="btn"   style="display:none">
+						<div class="stage" id="d" style="display:none;position: static; " style="z-index: 1;">
+							<input type="button" name="4_4" value="終了4"  id="btn-close3" class="btn" ></div>
+					<input type="button" name="5" value="user5_VR"  id="btn-open4" class="btn"   style="display:none">
+						<div class="stage" id="e" style="display:none;position: static; " style="z-index: 1;">
+							<input type="button" name="5_5" value="終了5"  id="btn-close4" class="btn"></div>
+					<input type="button" name="6" value="user6_VR"  id="btn-open5" class="btn"   style="display:none">
+						<div class="stage" id="f" style="display:none;position: static; " style="z-index: 1;">
+							<input type="button" name="6_6" value="終了6"  id="btn-close5" class="btn" ></div>
+
+				<input type="button" id="button-leave" onmouseup="leaveRoom();"
+					value="Leave room">
+			</div>
+		</div>
+	</div>
+
+	<script src="./bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="./bower_components/adapter.js/adapter.js"></script>
+    <script src="./bower_components/kurento-utils/js/kurento-utils.min.js"></script>
+    <script src="./js/index.js"></script>
+	<script src="./js/participants.js"></script>
+	<script src="./js/swswsw.js"></script>
+    
+
+</body>
+</html>
