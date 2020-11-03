@@ -1,5 +1,6 @@
 var pc = null, dc = null, dcInterval = null;
 var preview = document.getElementById('preview');
+var dataChannelLog = document.getElementById('data-channel');
 
 function writeConsole(msg)
 {
@@ -90,6 +91,26 @@ function negotiate() {
 function start() {
     document.getElementById('start').style.display = 'none';
     pc = createPeerConnection();
+
+
+    dc = pc.createDataChannel('chat');
+    dc.onclose = function() {
+        clearInterval(dcInterval);
+        dataChannelLog.textContent += '- close\n';
+    };
+    dc.onopen = function() {
+        dataChannelLog.textContent += '- open\n';
+        dcInterval = setInterval(function() {
+            var message = 'ping ' + current_stamp();
+            //dataChannelLog.textContent += '> ' + message + '\n';
+            dc.send(message);
+        }, 1000);
+    };
+    dc.onmessage = function(evt) {
+        dataChannelLog.textContent += '< ' + evt.data + '\n';
+    };
+
+
 
     //mediaDevices constraints, be aware the browser may just ignore them
     var constraints = {

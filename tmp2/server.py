@@ -13,6 +13,8 @@ ROOT = os.path.dirname(__file__)
 
 logger = logging.getLogger("pc")
 pcs = set()
+dt_now = datetime.datetime.now()
+
 
 #Route requests
 async def index(request):
@@ -60,12 +62,13 @@ async def offer(request):
             track, transform=params["video_transform"]
         )
         pc.addTrack(local_video)
-       
+
         @pc.on("datachannel")
         def on_datachannel(channel):
             @channel.on("message")
             def on_message(message):
-                #if isinstance(message, str) and message.startswith("ping"):
+                if isinstance(message, str) and message.startswith("ping"):
+                    channel.send("時刻:"+str(dt_now))
 
 
 
@@ -73,7 +76,7 @@ async def offer(request):
                 #channel.send(str(tes))
                 #print(tes)
                 channel.send("aaaaaaaaaaa")
-       
+
 
 
 
