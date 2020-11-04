@@ -4,7 +4,7 @@ var preview = document.getElementById('preview');
 var dataChannelLog = document.getElementById('data-channel');
 var constraints = {
     audio:false,
-    video: {width: 320, height: 240, frameRate: { ideal: 10, max:20 } }
+    video: {width: 320, height: 240, frameRate: { ideal: 28, min:10, max:30 } }
 };
 
 
@@ -135,7 +135,7 @@ function start() {
             var message = 'ping ' + current_stamp();
             //dataChannelLog.textContent += '> ' + message + '\n';
             dc.send(message);
-        }, 1000/30);
+        }, 1000/28);
     };
 
     if (constraints.video) {
@@ -146,7 +146,7 @@ function start() {
                 preview.play();
                 setInterval(function(){
                             ctx.drawImage(preview, 0, 0, 320, 240);
-                }, 1000/30);
+                }, 1000/28);
                 };
                 stream.getTracks().forEach(function(track) {
                     pc.addTrack(track, stream);
