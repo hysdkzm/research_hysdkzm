@@ -1,6 +1,29 @@
+//11:23
 var pc = null, dc = null, dcInterval = null;
 var preview = document.getElementById('preview');
 var dataChannelLog = document.getElementById('data-channel');
+var constraints = {
+    audio:false,
+    video: {width: 320, height: 240, frameRate: { ideal: 10, max:20 } }
+};
+
+
+var cnt=0;
+var count=0;
+var canvas = document.getElementById("c");
+//var canvas1 = document.createElement("canvas");
+//var canvas2 = document.createElement("canvas");
+//canvas1.setAttribute( "width" , 320 );
+//canvas1.setAttribute( "height" , 240 );
+//canvas2.setAttribute( "width" , 320 );
+//canvas2.setAttribute( "height" , 240 );
+var ctx = canvas.getContext("2d");
+//var ctx1 = canvas1.getContext("2d");
+//var ctx2 = canvas2.getContext("2d");
+
+var tbl;
+
+
 
 function writeConsole(msg)
 {
@@ -92,7 +115,6 @@ function start() {
     document.getElementById('start').style.display = 'none';
     pc = createPeerConnection();
     var ary;
-
     var time_start = null;
     function current_stamp() {
         if (time_start === null) {
@@ -102,7 +124,6 @@ function start() {
             return new Date().getTime() - time_start;
         }
     }
-
     dc = pc.createDataChannel('chat');
     dc.onclose = function() {
         clearInterval(dcInterval);
@@ -114,57 +135,96 @@ function start() {
             var message = 'ping ' + current_stamp();
             //dataChannelLog.textContent += '> ' + message + '\n';
             dc.send(message);
-        }, 100);
-    };
-    dc.onmessage = function(evt) {
-        dataChannelLog.textContent += '< ' + evt.data + '\n';
-        //x=evt.data.list
-        if(evt.data == "None"){
-             console.log("None")
-        }
-        else if(evt.data != "[]"){
-            n0=evt.data
-            //console.log(typeof n0); //String
-            //console.log("evt.data=====>",n0);
-            n1 =n0.replace('[(','') ;
-            n2 =n1.replace(')]','') ;
-            x = n2.split('), (');
-            //console.log(x);
-            //console.log(typeof x);
-            var tbl = JSON.parse(JSON.stringify((new Array(x.length)).fill((new Array(6)).fill(0))));
-            for(i = 0; i < x.length; i++) {
-                var a=x[i].split(',');
-                a[2]=a[2].replace('(','');
-                a[5]=a[5].replace(')','');
-                tbl[i]=a;
-            } 
-             ary=tbl       
-             //console.log(tbl);
-             //console.log(typeof tbl);  //Array[][6]
-             //console.log(tbl[0][0]);   //"b'className'"
-        }else{
-             console.log("non detection!");
-}
-        };
-
-
-    console.log("detection===>>>",ary);
-    //mediaDevices constraints, be aware the browser may just ignore them
-    var constraints = {
-         audio:false,
-         video: {width: 320, height: 240, frameRate: { ideal: 10, max:20 } }
+        }, 1000/30);
     };
 
     if (constraints.video) {
-
         if(navigator.mediaDevices.getUserMedia){
             navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
                 preview.srcObject = stream;
                 preview.onloadedmetadata = function(e) {
-                  preview.play();
+                preview.play();
+                setInterval(function(){
+                            ctx.drawImage(preview, 0, 0, 320, 240);
+                }, 1000/30);
                 };
                 stream.getTracks().forEach(function(track) {
                     pc.addTrack(track, stream);
+                    dc.onmessage = function(evt) {
+                        dataChannelLog.textContent += '< ' + evt.data + '\n';
+                        //x=evt.data.list
+                        cnt=cnt+1;
+                        console.log("detection",cnt);
+                        if(evt.data == "None"){
+                            console.log("None")
+                        }
+                        else if(evt.data != "[]"){
+		            var canvas2 = document.createElement("canvas");
+			    //canvas1.setAttribute( "width" , 320 );
+			    //canvas1.setAttribute( "height" , 240 );
+			    canvas2.setAttribute( "width" , 320 );
+			    canvas2.setAttribute( "height" , 240 );
+			    //var ctx = canvas.getContext("2d");
+		 	    //var ctx1 = canvas1.getContext("2d");
+			    var ctx2 = canvas2.getContext("2d");
+
+			    ctx2.beginPath () ;
+                            n0=evt.data
+                            //console.log(typeof n0); //String
+                            //console.log("evt.data=====>",n0);
+                            n1 =n0.replace('[(','') ;
+                            n2 =n1.replace(')]','') ;
+                            x = n2.split('), (');
+                            //console.log(x);
+                            //console.log(typeof x);
+                            var tbl = JSON.parse(JSON.stringify((new Array(x.length)).fill((new Array(6)).fill(0))));
+                            for(i = 0; i < x.length; i++) {
+                                var a=x[i].split(',');
+                                a[2]=a[2].replace('(','');
+                                a[5]=a[5].replace(')','');
+                                tbl[i]=a;
+                		tbl[i][1]=Number(tbl[i][1]); 
+                		tbl[i][2]=Number(tbl[i][2]);  //xcenter(416)
+                		tbl[i][3]=Number(tbl[i][3]);  //ycenter(416)
+                		tbl[i][4]=Number(tbl[i][4]);  //width(416)
+                		tbl[i][5]=Number(tbl[i][5]);  //height(416)
+                		tbl[i][2] = (tbl[i][2] - (tbl[i][4] / 2)) * (320 / 416) ;  //x(320)
+                		tbl[i][3] = (tbl[i][3] - (tbl[i][5] / 2 )) * (240 / 416);   //y(240)
+                		tbl[i][4] = tbl[i][4] * (320 / 416);  //width(320)
+                		tbl[i][5] = tbl[i][5] * (240 / 416);   //height(240)
+            
+                            	ctx2.rect( tbl[i][2], tbl[i][3], tbl[i][4], tbl[i][5] ) ;
+                            	ctx2.fillStyle = "rgba(255,255,255,0)" ;
+                            	ctx2.fill() ;
+                            	ctx2.strokeStyle = "green" ;
+                            	ctx2.lineWidth = 2 ;
+                            	ctx2.stroke() ;
+                            	//ctx.drawImage(canvas2, 0, 0);
+                            	//count=count+1;
+                            	//console.log("rect",count);
+                            }
+			    ctx.drawImage(canvas2, 0, 0);
+                            //ctx2.beginPath () ; 
+                            //ary=tbl       
+                            //console.log(tbl);
+        		    //console.log(tbl[0][2]);
+        		    //console.log(tbl[0][3]);
+                             //console.log(typeof tbl);  //Array[][6]
+                             //console.log(tbl[0][0]);   //"b'className'"
+                            //ctx2.beginPath () ;
+                            //ctx2.rect( 50, 50, 75, 50 ) ;
+                            //ctx2.fillStyle = "rgba(255,255,255,0)" ;
+                            //ctx2.fill() ;
+                            //ctx2.strokeStyle = "green" ;
+                            //ctx2.lineWidth = 4 ;
+                            //ctx2.stroke() ;
+                            //ctx.drawImage(canvas2, 0, 0);
+			    count=count+1;
+			    console.log("rect",count);
+                        }else{
+                            console.log("non detection!");
+                        }
+                    };
                 });
                 return negotiate();
             }, function(err) {
@@ -174,8 +234,10 @@ function start() {
     } else {
         negotiate();
     }
-
     document.getElementById('stop').style.display = 'block';
+    //console.log("detection",cnt);
+    //console.log("rect",count);
+
 }
 
 function stop() {
@@ -200,13 +262,11 @@ function stop() {
     pc.getSenders().forEach(function(sender) {
         sender.track.stop();
     });
-
     // close peer connection
     setTimeout(function() {
         pc.close();
     }, 500);
 }
-
 function sdpFilterCodec(kind, codec, realSdp) {
     var allowed = []
     var rtxRegex = new RegExp('a=fmtp:(\\d+) apt=(\\d+)\r$');
