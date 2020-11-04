@@ -91,7 +91,17 @@ function negotiate() {
 function start() {
     document.getElementById('start').style.display = 'none';
     pc = createPeerConnection();
+    var ary;
 
+    var time_start = null;
+    function current_stamp() {
+        if (time_start === null) {
+            time_start = new Date().getTime();
+            return 0;
+        } else {
+            return new Date().getTime() - time_start;
+        }
+    }
 
     dc = pc.createDataChannel('chat');
     dc.onclose = function() {
@@ -104,14 +114,41 @@ function start() {
             var message = 'ping ' + current_stamp();
             //dataChannelLog.textContent += '> ' + message + '\n';
             dc.send(message);
-        }, 1000);
+        }, 100);
     };
     dc.onmessage = function(evt) {
         dataChannelLog.textContent += '< ' + evt.data + '\n';
-    };
+        //x=evt.data.list
+        if(evt.data == "None"){
+             console.log("None")
+        }
+        else if(evt.data != "[]"){
+            n0=evt.data
+            //console.log(typeof n0); //String
+            //console.log("evt.data=====>",n0);
+            n1 =n0.replace('[(','') ;
+            n2 =n1.replace(')]','') ;
+            x = n2.split('), (');
+            //console.log(x);
+            //console.log(typeof x);
+            var tbl = JSON.parse(JSON.stringify((new Array(x.length)).fill((new Array(6)).fill(0))));
+            for(i = 0; i < x.length; i++) {
+                var a=x[i].split(',');
+                a[2]=a[2].replace('(','');
+                a[5]=a[5].replace(')','');
+                tbl[i]=a;
+            } 
+             ary=tbl       
+             //console.log(tbl);
+             //console.log(typeof tbl);  //Array[][6]
+             //console.log(tbl[0][0]);   //"b'className'"
+        }else{
+             console.log("non detection!");
+}
+        };
 
 
-
+    console.log("detection===>>>",ary);
     //mediaDevices constraints, be aware the browser may just ignore them
     var constraints = {
          audio:false,
