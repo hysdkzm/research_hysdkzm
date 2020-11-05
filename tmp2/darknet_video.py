@@ -1,9 +1,15 @@
 from ctypes import *
 import math, random, os, cv2, time, sys
 import numpy as np
+import json
+import requests
+
+
 
 sys.path.insert(1, '/home/hayashida/darknet/')
 import darknet
+
+res=None
 
 def convertBack(x, y, w, h):
     xmin = int(round(x - (w / 2)))
@@ -161,6 +167,50 @@ def Inference(img):
     framebytes = frame_resized.tobytes()
     darknet.copy_image_from_bytes(darknet_image, framebytes)
     detections = darknet.detect_image(netMain, metaMain, darknet_image, thresh=0.5)
+
+#    print("resize1",darknet.network_width(netMain))
+#    print("resize2",darknet.network_height(netMain))
+
+    #print("3333333333333",frame_resized[1])
+    #print(detections.shape)    #list-type
+    #frame_resized = cv2.resize(img,
+      #                          (darknet.network_width(netMain),
+       #                         darknet.network_height(netMain)),
+    #print(type(detections))   
+    #print(detections)
+    #StrA = " ".join(detections)
+    #print(detections)
+    #response = requests.post(
+     #  'http://localhost:8080/index.html',
+      #  json.dumps(detections),
+       # headers={'Content-Type': 'application/json'})
+    #print(response.text)
+    global res
+    res=detections
+    #print("result1",res)
+
+   #                        interpolation=cv2.INTER_LINEAR)    
+    image = cvDrawBoxes2(detections, frame_resized)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+   # cv2.imshow('Demo', image)
+    #print(image.shape)
+   # cv2.waitKey(3)
+
+   # print("33333",detections.plane)
+    #print(detections)
+    return image
+    #return detections
+
+def Inference2(img):
+    #print(img.shape)   #240 320
+    frame_resized = cv2.resize(img,
+                               (darknet.network_width(netMain),
+                                darknet.network_height(netMain)),
+                                interpolation=cv2.INTER_LINEAR)
+    #print(type(frame_resized))
+    framebytes = frame_resized.tobytes()
+    darknet.copy_image_from_bytes(darknet_image, framebytes)
+    detections = darknet.detect_image(netMain, metaMain, darknet_image, thresh=0.5)
     #print(darknet.network_width(netMain))
 
     #print("3333333333333",frame_resized[1])
@@ -168,19 +218,13 @@ def Inference(img):
     #frame_resized = cv2.resize(img,
       #                          (darknet.network_width(netMain),
        #                         darknet.network_height(netMain)),
-     
-
-   #                        interpolation=cv2.INTER_LINEAR)    
-    image = cvDrawBoxes2(detections, frame_resized)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    #cv2.imshow('Demo', image)
-    #print(image.shape)
-    #cv2.waitKey(3)
-
-   # print("33333",detections.plane)
+    #print(type(detections))   
     #print(detections)
-    return image
-    #return detections
+    #StrA = " ".join(detections)
+    #print(detections)
+
+    return detection
+
 
 
 #As we are calling it during videoTransform just init
