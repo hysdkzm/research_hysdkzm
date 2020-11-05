@@ -2,18 +2,20 @@ import argparse, asyncio, json, logging, os, ssl, uuid, cv2
 from aiohttp import web
 from av import VideoFrame
 from videotransform import VideoTransform
-from videotransform2 import VideoTransform2
+import darknet_video 
 from aiortc import MediaStreamTrack, RTCPeerConnection, RTCSessionDescription
 from aiortc.contrib.media import MediaBlackhole, MediaPlayer, MediaRecorder
 import subprocess
 from websocket_server import WebsocketServer
 from datetime import datetime
 
+
+
 ROOT = os.path.dirname(__file__)
 
 logger = logging.getLogger("pc")
 pcs = set()
-dt_now = datetime.datetime.now()
+dt_now = datetime.now()
 
 
 #Route requests
@@ -68,14 +70,13 @@ async def offer(request):
             @channel.on("message")
             def on_message(message):
                 if isinstance(message, str) and message.startswith("ping"):
-                    channel.send("時刻:"+str(dt_now))
+                 #   channel.send("時刻:"+str(dt_now))
 
-
-
-                #tes=type(VideoTransform.d_res)
-                #channel.send(str(tes))
+                	tes=darknet_video.res
+                #tes=VideoTransform.d_res
+                	channel.send(str(tes))
                 #print(tes)
-                channel.send("aaaaaaaaaaa")
+                #channel.send("aaaaaaaaaaa")
 
 
 
