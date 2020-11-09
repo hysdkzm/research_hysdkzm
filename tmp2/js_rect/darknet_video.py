@@ -10,7 +10,8 @@ sys.path.insert(1, '/home/hayashida/darknet/')
 import darknet
 
 res=None
-
+detections=None
+i=1
 def convertBack(x, y, w, h):
     xmin = int(round(x - (w / 2)))
     xmax = int(round(x + (w / 2)))
@@ -108,13 +109,14 @@ altNames = None
 darknet_image = None
 
 def InitialiseYOLO():
+  
     print('YOLO Init')
     global metaMain, netMain, altNames, darknet_image
 
     #configPath = "./cfg/yolov4.cfg"
     configPath = "/home/hayashida/darknet/cfg/yolov3.cfg"
     #weightPath = "./yolov4.weights"
-    weightPath = "/root/tmp/darknet/yolov3.weights"
+    weightPath = "/home/hayashida/darknet/yolov3.weights"
     #metaPath = "./cfg/coco.data"
     metaPath = "/home/hayashida/darknet/cfg/coco.data"
 
@@ -159,6 +161,7 @@ def InitialiseYOLO():
 
 def Inference(img):
     #print(img.shape)   #240 320
+    global detections
     frame_resized = cv2.resize(img,
                                (darknet.network_width(netMain),
                                 darknet.network_height(netMain)),
@@ -170,7 +173,11 @@ def Inference(img):
 
 #    print("resize1",darknet.network_width(netMain))
 #    print("resize2",darknet.network_height(netMain))
-
+     
+    #i=i+1
+    global i
+    print(i)
+    i=i+1
     #print("3333333333333",frame_resized[1])
     #print(detections.shape)    #list-type
     #frame_resized = cv2.resize(img,
@@ -185,9 +192,9 @@ def Inference(img):
       #  json.dumps(detections),
        # headers={'Content-Type': 'application/json'})
     #print(response.text)
-    global res
-    res=detections
-    #print("result1",res)
+#    global res
+#    res=detections#
+    print(detections)
 
    #                        interpolation=cv2.INTER_LINEAR)    
     image = cvDrawBoxes2(detections, frame_resized)

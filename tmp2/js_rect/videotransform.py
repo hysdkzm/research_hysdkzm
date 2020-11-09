@@ -29,7 +29,7 @@ class VideoTransform(MediaStreamTrack):
         self.track = track
         self.transform = transform
         self.busy = True
-        global d_res
+        #global d_res
         
     async def recv(self):
         #Grab frame from stream
@@ -74,13 +74,13 @@ class VideoTransform(MediaStreamTrack):
         #detections = darknet.detect_image(netMain, metaMain, darknet_image, thresh=0.5)  
         image = darknet_video.Inference(img)
         
-        global d_res
+ #       global d_res
 
-        d_res=darknet_video.res
+  #      d_res=darknet_video.res
         #print("result2",d_res)
 
         #image = cvDrawBoxes(detections, frame_resized)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 #        cv2.imshow('Demo', image)
 #        cv2.waitKey(3)
 #        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -95,19 +95,19 @@ class VideoTransform(MediaStreamTrack):
         #b = image.reshape((,3))
 #        image_re = image.resize((320, 240))
 
-        im = cv2.resize(image,(320,240),interpolation=cv2.INTER_LINEAR)
+ #       im = cv2.resize(image,(320,240),interpolation=cv2.INTER_LINEAR)
         #im=image.reshape((320,240))
         #print("2:                   ",self)
  
        #Convert frame back to stream
 
-        new_frame = VideoFrame.from_ndarray(im,format="rgb24")#default=img, rgb24
+#        new_frame = VideoFrame.from_ndarray(im,format="rgb24")#default=img, rgb24
         
        # cv2.imshow("Test", new_frame)
       #  key=cv2.waitKey(1)
 
-        new_frame.pts = frame.pts
-        new_frame.time_base = frame.time_base
+#        new_frame.pts = frame.pts
+#        new_frame.time_base = frame.time_base
 
         #new_frame_re = new_frame.resize((320, 240))
 
@@ -123,5 +123,4 @@ class VideoTransform(MediaStreamTrack):
         #print(new_frame.planes)   
         #new_frame = cv2.resize(np.float32(new_frame), dsize=(240, 320))
         #print("3              :",new_frame)
-        return new_frame
-
+        return frame

@@ -6,13 +6,13 @@ import darknet_video
 from aiortc import MediaStreamTrack, RTCPeerConnection, RTCSessionDescription
 from aiortc.contrib.media import MediaBlackhole, MediaPlayer, MediaRecorder
 import subprocess
-from websocket_server import WebsocketServer
+#from websocket_server import WebsocketServer
 from datetime import datetime
 
 
 
 ROOT = os.path.dirname(__file__)
-
+cnt=1
 logger = logging.getLogger("pc")
 pcs = set()
 dt_now = datetime.now()
@@ -48,7 +48,18 @@ async def offer(request):
     # prepare local media as a blackhole
     recorder = MediaBlackhole()
 
-    
+    @pc.on("datachannel")
+    def on_datachannel(channel):
+        @channel.on("message")
+        def on_message(message):
+          if isinstance(message, str) and message.startswith("ping"):
+                 #   channel.send("時刻:"+str(dt_now))
+
+            ##tes=darknet_video.detections
+                #tes=VideoTransform.d_res
+          	channel.send(str(darknet_video.detections))
+                #print(tes)
+                #channel.send("aaaaaaaaaaa")
 
     @pc.on("iceconnectionstatechange")
     async def on_iceconnectionstatechange():
@@ -64,19 +75,10 @@ async def offer(request):
             track, transform=params["video_transform"]
         )
         pc.addTrack(local_video)
+        global cnt
+        print(cnt)
+        cnt=cnt+1
 
-        @pc.on("datachannel")
-        def on_datachannel(channel):
-            @channel.on("message")
-            def on_message(message):
-                if isinstance(message, str) and message.startswith("ping"):
-                 #   channel.send("時刻:"+str(dt_now))
-
-                	tes=darknet_video.res
-                #tes=VideoTransform.d_res
-                	channel.send(str(tes))
-                #print(tes)
-                #channel.send("aaaaaaaaaaa")
 
 
 
@@ -125,7 +127,7 @@ if __name__ == "__main__":
 
     #Optional: Set PORT
     parser.add_argument(
-        "--port", type=int, default=8000, help="Port for HTTP server (default: 8080)"
+        "--port", type=int, default=8080, help="Port for HTTP server (default: 8080)"
     )
     args = parser.parse_args()
 
