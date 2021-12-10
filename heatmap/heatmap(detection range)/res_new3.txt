@@ -1,0 +1,55 @@
+ CUDNN_HALF=1 
+net.optimized_memory = 0 
+mini_batch = 1, batch = 16, time_steps = 1, train = 0 
+nms_kind: greedynms (1), beta = 0.600000 
+nms_kind: greedynms (1), beta = 0.600000 
+nms_kind: greedynms (1), beta = 0.600000 
+
+ seen 64, trained: 512 K-images (8 Kilo-batches_64) 
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__145.jpg: Predicted in 11.409000 milli-seconds.
+person2: 78%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__033.jpg: Predicted in 11.428000 milli-seconds.
+person2: 79%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__054.jpg: Predicted in 11.392000 milli-seconds.
+person: 37%
+person2: 78%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__060.jpg: Predicted in 11.391000 milli-seconds.
+person2: 83%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__075.jpg: Predicted in 11.401000 milli-seconds.
+person2: 81%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__092.jpg: Predicted in 11.427000 milli-seconds.
+person2: 76%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__100.jpg: Predicted in 11.390000 milli-seconds.
+person2: 70%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__114.jpg: Predicted in 11.429000 milli-seconds.
+person2: 73%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__130.jpg: Predicted in 11.433000 milli-seconds.
+person2: 73%
+Enter Image Path: 

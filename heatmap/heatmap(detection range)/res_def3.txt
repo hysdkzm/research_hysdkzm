@@ -1,0 +1,44 @@
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__145.jpg: Predicted in 17.257000 milli-seconds.
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__033.jpg: Predicted in 17.241000 milli-seconds.
+person: 64%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__054.jpg: Predicted in 17.220000 milli-seconds.
+person: 39%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__060.jpg: Predicted in 17.243000 milli-seconds.
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__075.jpg: Predicted in 17.234000 milli-seconds.
+person: 47%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__092.jpg: Predicted in 17.237000 milli-seconds.
+person: 26%
+person: 46%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__100.jpg: Predicted in 17.231000 milli-seconds.
+person: 27%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__114.jpg: Predicted in 17.238000 milli-seconds.
+person: 29%
+Enter Image Path:  Detection layer: 139 - type = 28 
+ Detection layer: 150 - type = 28 
+ Detection layer: 161 - type = 28 
+/home/hayashida/yolov4/darknet/90/img__130.jpg: Predicted in 17.242000 milli-seconds.
+Enter Image Path: 

@@ -1,0 +1,224 @@
+
+testtmp/0/0.jpg:17.225000
+person: 95%
+
+testtmp/0/105.jpg:17.218000
+person: 88%
+
+testtmp/0/-105.jpg:17.296000
+person: 91%
+
+testtmp/0/140.jpg:17.218000
+person: 87%
+
+testtmp/0/-140.jpg:17.214000
+person: 86%
+
+testtmp/0/35.jpg:17.210000
+person: 93%
+
+testtmp/0/-35.jpg:17.227000
+person: 96%
+
+testtmp/0/70.jpg:16.559000
+person: 94%
+
+testtmp/0/-70.jpg:16.328000
+person: 94%
+
+testtmp/-23/0.jpg:16.271000
+person: 85%
+
+testtmp/-23/105.jpg:15.382000
+person: 79%
+
+testtmp/-23/-105.jpg:15.370000
+person: 86%
+
+testtmp/-23/140.jpg:15.247000
+person: 90%
+
+testtmp/-23/-140.jpg:15.234000
+person: 86%
+
+testtmp/-23/35.jpg:15.228000
+person: 84%
+
+testtmp/-23/-35.jpg:15.226000
+person: 89%
+
+testtmp/-23/70.jpg:14.744000
+person: 86%
+
+testtmp/-23/-70.jpg:14.781000
+person: 85%
+
+testtmp/-45/0.jpg:14.621000
+person: 86%
+
+testtmp/-45/105.jpg:14.624000
+person: 76%
+
+testtmp/-45/-105.jpg:14.613000
+person: 86%
+
+testtmp/-45/140.jpg:14.540000
+person: 88%
+
+testtmp/-45/-140.jpg:14.549000
+person: 70%
+
+testtmp/-45/35.jpg:14.468000
+person: 86%
+
+testtmp/-45/-35.jpg:14.476000
+person: 88%
+
+testtmp/-45/70.jpg:14.484000
+person: 79%
+
+testtmp/-45/-70.jpg:14.484000
+person: 88%
+
+testtmp/-68/0.jpg:14.471000
+person: 30%
+
+testtmp/-68/105.jpg:14.463000
+
+testtmp/-68/-105.jpg:14.454000
+
+testtmp/-68/140.jpg:14.460000
+
+testtmp/-68/-140.jpg:14.458000
+
+testtmp/-68/35.jpg:14.544000
+person: 26%
+
+testtmp/-68/-35.jpg:14.480000
+person: 28%
+
+testtmp/-68/70.jpg:14.459000
+person: 30%
+
+testtmp/-68/-70.jpg:14.499000
+
+testtmp/-75/0.jpg:14.538000
+person: 49%
+
+testtmp/-75/105.jpg:14.546000
+
+testtmp/-75/-105.jpg:14.521000
+
+testtmp/-75/140.jpg:14.513000
+
+testtmp/-75/-140.jpg:14.529000
+
+testtmp/-75/35.jpg:14.541000
+person: 31%
+
+testtmp/-75/-35.jpg:14.422000
+person: 45%
+
+testtmp/-75/70.jpg:14.465000
+person: 43%
+
+testtmp/-75/-70.jpg:14.470000
+
+testtmp/23/0.jpg:16.323000
+person: 94%
+
+testtmp/23/105.jpg:16.099000
+person: 90%
+
+testtmp/23/-105.jpg:16.086000
+person: 94%
+
+testtmp/23/140.jpg:15.287000
+person: 81%
+
+testtmp/23/-140.jpg:15.246000
+person: 74%
+
+testtmp/23/35.jpg:15.239000
+person: 94%
+
+testtmp/23/-35.jpg:15.237000
+person: 94%
+
+testtmp/23/70.jpg:15.322000
+person: 92%
+
+testtmp/23/-70.jpg:15.202000
+person: 95%
+
+testtmp/45/0.jpg:14.659000
+person: 91%
+
+testtmp/45/105.jpg:14.638000
+person: 91%
+
+testtmp/45/-105.jpg:14.644000
+person: 93%
+
+testtmp/45/140.jpg:14.623000
+person: 84%
+
+testtmp/45/-140.jpg:14.641000
+person: 86%
+
+testtmp/45/35.jpg:14.483000
+person: 92%
+
+testtmp/45/-35.jpg:14.470000
+person: 94%
+
+testtmp/45/70.jpg:14.467000
+person: 89%
+
+testtmp/45/-70.jpg:14.490000
+person: 95%
+
+testtmp/70/0.jpg:14.465000
+person: 39%
+
+testtmp/70/105.jpg:14.496000
+person: 69%
+
+testtmp/70/-105.jpg:14.462000
+
+testtmp/70/140.jpg:14.438000
+person: 36%
+
+testtmp/70/-140.jpg:14.442000
+
+testtmp/70/35.jpg:14.456000
+person: 30%
+
+testtmp/70/-35.jpg:14.431000
+person: 29%
+
+testtmp/70/70.jpg:14.454000
+person: 52%
+
+testtmp/70/-70.jpg:14.468000
+person: 58%
+
+testtmp/95/0.jpg:14.410000
+
+testtmp/95/105.jpg:14.427000
+
+testtmp/95/-105.jpg:14.427000
+
+testtmp/95/140.jpg:14.531000
+
+testtmp/95/-140.jpg:14.451000
+
+testtmp/95/35.jpg:14.450000
+
+testtmp/95/-35.jpg:14.471000
+person: 28%
+
+testtmp/95/70.jpg:14.430000
+
+testtmp/95/-70.jpg:14.550000
+person: 55%

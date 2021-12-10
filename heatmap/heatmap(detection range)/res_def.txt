@@ -1,0 +1,129 @@
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/0.png: Predicted in 17.202000 milli-seconds.
+person: 68%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/105.png: Predicted in 17.165000 milli-seconds.
+person: 57%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/-105.png: Predicted in 17.166000 milli-seconds.
+person: 69%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/140.png: Predicted in 17.158000 milli-seconds.
+person: 64%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/-140.png: Predicted in 17.154000 milli-seconds.
+person: 59%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/35.png: Predicted in 17.155000 milli-seconds.
+person: 77%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/-35.png: Predicted in 17.166000 milli-seconds.
+person: 77%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/70.png: Predicted in 17.157000 milli-seconds.
+person: 69%
+
+/home/hayashida/yolov4/darknet/test_img2/new/0/-70.png: Predicted in 17.159000 milli-seconds.
+person: 64%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/0.png: Predicted in 16.587000 milli-seconds.
+person: 27%
+person: 42%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/105.png: Predicted in 14.291000 milli-seconds.
+person: 40%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/-105.png: Predicted in 14.231000 milli-seconds.
+person: 41%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/140.png: Predicted in 14.224000 milli-seconds.
+person: 64%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/-140.png: Predicted in 14.214000 milli-seconds.
+person: 70%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/35.png: Predicted in 14.201000 milli-seconds.
+person: 31%
+person: 46%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/-35.png: Predicted in 14.182000 milli-seconds.
+person: 28%
+person: 41%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/70.png: Predicted in 14.210000 milli-seconds.
+person: 34%
+person: 44%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-23/-70.png: Predicted in 14.225000 milli-seconds.
+person: 39%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/0.png: Predicted in 14.202000 milli-seconds.
+person: 56%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/105.png: Predicted in 14.197000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/-105.png: Predicted in 14.302000 milli-seconds.
+person: 43%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/140.png: Predicted in 14.209000 milli-seconds.
+person: 64%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/-140.png: Predicted in 14.256000 milli-seconds.
+person: 70%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/35.png: Predicted in 14.211000 milli-seconds.
+person: 31%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/-35.png: Predicted in 14.206000 milli-seconds.
+person: 47%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/70.png: Predicted in 14.228000 milli-seconds.
+person: 47%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-45/-70.png: Predicted in 14.201000 milli-seconds.
+person: 32%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/0.png: Predicted in 14.214000 milli-seconds.
+person: 35%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/105.png: Predicted in 14.207000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/-105.png: Predicted in 14.215000 milli-seconds.
+person: 48%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/140.png: Predicted in 14.188000 milli-seconds.
+person: 30%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/-140.png: Predicted in 14.235000 milli-seconds.
+person: 53%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/35.png: Predicted in 14.212000 milli-seconds.
+person: 49%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/-35.png: Predicted in 14.215000 milli-seconds.
+person: 49%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/70.png: Predicted in 14.244000 milli-seconds.
+person: 52%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-68/-70.png: Predicted in 14.219000 milli-seconds.
+person: 28%
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/0.png: Predicted in 14.218000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/105.png: Predicted in 14.210000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/-105.png: Predicted in 14.235000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/140.png: Predicted in 14.195000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/-140.png: Predicted in 14.207000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/35.png: Predicted in 14.230000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/-35.png: Predicted in 14.212000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/70.png: Predicted in 14.236000 milli-seconds.
+
+/home/hayashida/yolov4/darknet/test_img2/new/-80/-70.png: Predicted in 14.288000 milli-seconds.
+Enter Image Path: 
